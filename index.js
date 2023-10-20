@@ -86,3 +86,26 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+
+// PSEUDOCODE
+
+// Create a for loop that goes throught the array
+// Your task is to write JavaScript code that analyzes the records to calculate each of the following:
+
+
+// 1. LOG the total number of months included in the dataset.
+
+
+// 2. CALCULATE the net TOTAL amount of Profit/Losses over the entire period.
+
+
+// 3. CALCULATE The average of the changes in Profit/Losses over the entire period.
+  // You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+  // (Total/(Number of months - 1))
+
+
+// 4. CALCULATE The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+
+// 5. CALCULATE The greatest decrease in Profit/Losses (date and amount) over the entire period.

@@ -88,45 +88,42 @@ var finances = [
 ];
 
 
+// ** INITIALIZATION **
 
-// 0. Console.log initial text:
-console.log("Financial Analysis");
-console.log("----------------");
-
-
-
-// 1. LOG the total number of months included in the dataset.
-var totalMonths = finances.length;
-console.log("Total Months: " + totalMonths);
+// Initialize variables               // It will store the:
+var totalMonths = finances.length;    // total months of the dataset
+var totalAmount = 0;                  // sum of each month's profit/loss
+var totalProfitChange = 0;            // total profit change
+var greatestIncrease = ["", 0];        // [month-year, profit change] of the month with the highest profit
+var greatestDecrease = ["", 0];        // [month-year, profit change] of the month with the highest loss          
 
 
 
-// 2. CALCULATE the net TOTAL amount of Profit/Losses over the entire period.
-
-
-var totalAmount = 0;
-
-var totalProfitChanges = 0;
-
-var greatestIncrease = ["",0];
-var greatestDecrease = ["",0];
-var previousProfitChange;
+// ** ALGORITHM **
 
 // Iterate through the number of each array element using a "for" loop.
 for (var i = 0; i < totalMonths; i++) {
-  // Update the total amount by adding/subtracting the number
+
+  // Store the current amount
   var currentAmount = finances[i][1];
+
+  // Add the currentAmount to the totalAmount
   totalAmount += currentAmount;
 
-  // Calculate each month's Profit Change
+
+  // After the 1st iteration, start calculating each month's Profit Change
+  // We do this cause we first need to have a starting value for "previousMonthsProfit"
   if (i > 0) {
 
-    previousMonth = finances[i - 1][1];
-    var currentProfitChange = previousMonth - currentAmount;
+    // Calculate profit change between this and the previous month 
+    // (change = [previous month's profit] - [current month's profit])
+    var previousMonthsProfit = finances[i - 1][1];
+    var currentProfitChange = previousMonthsProfit - currentAmount;
 
-    // Update the total number of changes (Task 3)
-    totalProfitChanges += currentProfitChange;
-    // debugger;
+    // Update the sum of all profit Changes
+    totalProfitChange += currentProfitChange;
+
+    // Store the greatest Increase and Decrease in an array
     if (currentProfitChange > greatestDecrease[1]) {
       greatestDecrease = [finances[i][0], currentProfitChange];
     }
@@ -136,23 +133,35 @@ for (var i = 0; i < totalMonths; i++) {
   }
 }
 
-// Reverse polarity of numbers
+// Calculate Average Change (Total/(Number of months - 1)) round it to nearset 100th.
+averageChange = (totalProfitChange / (totalMonths - 1));      // Full decimal number
+averageChange100 = averageChange.toFixed(2);                  // Alternatively: Math.round(averageChange * 100) / 100
+
+// Reverse the polarity of averageChange, greatestIncrease/Decrease
+averageChange100 = -averageChange100;                         
 greatestIncrease[1] = Math.abs(greatestIncrease[1]);
 greatestDecrease[1] *= -1;
 
-// Log the total amount
+
+
+
+// ** LOG RESULTS **
+
+// 0. Console.log initial text:
+console.log("Financial Analysis");
+console.log("----------------");
+
+// 1. Log the total number of months included in the dataset.
+console.log("Total Months: " + totalMonths);
+
+// 2. Log the total amount (sum).
 console.log("Total: " + "$" + totalAmount);
 
+// 3. Log the Average Change.
+console.log("Average Change: " + (averageChange100));
 
-// Calculate Average Change (Total/(Number of months - 1)) and log it.
-averageChange = (totalProfitChanges / (totalMonths - 1));
-console.log("Average Change: " + "$" + averageChange.toFixed(2));
+// 4. Log the greatest increase in Profit (date and amount) over the entire period.
+console.log("Greatest Increase in Profits/Losses: " + greatestIncrease[0] + " ($" + greatestIncrease[1] + ")" );
 
-
-
-// 4. CALCULATE The greatest increase in Profit/Losses (date and amount) over the entire period.
-
-
-console.log("Greatest Increase in Profits/Losses: " + greatestIncrease)
-console.log("Greatest Decrease in Profits/Losses: " + greatestDecrease)
-// 5. CALCULATE The greatest decrease in Profit/Losses (date and amount) over the entire period.
+// 5. Log the greatest decrease in Profit (date and amount) over the entire period.
+console.log("Greatest Decrease in Profits/Losses: " + greatestDecrease[0] + " ($" + greatestIncrease[1] + ")" );

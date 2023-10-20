@@ -107,6 +107,18 @@ console.log("Total Months: " + totalMonths);
 // 2. CALCULATE the net TOTAL amount of Profit/Losses over the entire period.
 
 
+// Create a variable that stores the total amount
+
+// Iterate through the number of each array element using a "for" loop.
+  
+  // Update the total amount by adding/subtracting the number
+
+
+  // Log the total amount
+
+
+
+
 
 // 3. CALCULATE The average of the changes in Profit/Losses over the entire period.
   // You will need to track what the total change in Profit/Losses are from month to month and then find the average.

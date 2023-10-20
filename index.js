@@ -88,34 +88,32 @@ var finances = [
 ];
 
 
-// PSEUDOCODE
 
-// Create a for loop that goes throught the array
-// Your task is to write JavaScript code that analyzes the records to calculate each of the following:
-
-//0. Console.log initial text:
+// 0. Console.log initial text:
 console.log("Financial Analysis");
 console.log("----------------");
 
 
-// 1. LOG the total number of months included in the dataset.
 
+// 1. LOG the total number of months included in the dataset.
 var totalMonths = finances.length;
 console.log("Total Months: " + totalMonths);
+
 
 
 // 2. CALCULATE the net TOTAL amount of Profit/Losses over the entire period.
 
 
-// Create a variable that stores the total amount
+var totalAmount = 0;
 
 // Iterate through the number of each array element using a "for" loop.
-  
+for (var i = 0; i < totalMonths; i++) {
   // Update the total amount by adding/subtracting the number
-
-
-  // Log the total amount
-
+  var currentAmount = finances[i][1]
+  totalAmount += currentAmount
+}
+// Log the total amount
+console.log("Total: " + "$" + totalAmount)
 
 
 

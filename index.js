@@ -105,22 +105,27 @@ console.log("Total Months: " + totalMonths);
 
 
 var totalAmount = 0;
+var averageChange = 0;
 
 // Iterate through the number of each array element using a "for" loop.
 for (var i = 0; i < totalMonths; i++) {
   // Update the total amount by adding/subtracting the number
   var currentAmount = finances[i][1]
   totalAmount += currentAmount
+
+  // 3. CALCULATE The average of the changes in Profit/Losses over the entire period.
+    // You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+    // (Total/(Number of months - 1))
+
+
 }
+
+
 // Log the total amount
 console.log("Total: " + "$" + totalAmount)
 
 
 
-
-// 3. CALCULATE The average of the changes in Profit/Losses over the entire period.
-  // You will need to track what the total change in Profit/Losses are from month to month and then find the average.
-  // (Total/(Number of months - 1))
 
 
 

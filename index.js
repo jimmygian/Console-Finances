@@ -105,38 +105,54 @@ console.log("Total Months: " + totalMonths);
 
 
 var totalAmount = 0;
+
 var totalProfitChanges = 0;
+
+var greatestIncrease = ["",0];
+var greatestDecrease = ["",0];
+var previousProfitChange;
 
 // Iterate through the number of each array element using a "for" loop.
 for (var i = 0; i < totalMonths; i++) {
   // Update the total amount by adding/subtracting the number
-  var currentAmount = finances[i][1]
-  totalAmount += currentAmount
+  var currentAmount = finances[i][1];
+  totalAmount += currentAmount;
 
-  // 3. CALCULATE The average of the CHANGES in Profit/Losses over the entire period.
+  // Calculate each month's Profit Change
   if (i > 0) {
+
     previousMonth = finances[i - 1][1];
     var currentProfitChange = previousMonth - currentAmount;
 
+    // Update the total number of changes (Task 3)
     totalProfitChanges += currentProfitChange;
+    // debugger;
+    if (currentProfitChange > greatestDecrease[1]) {
+      greatestDecrease = [finances[i][0], currentProfitChange];
+    }
+    if (currentProfitChange < greatestIncrease[1]) {
+      greatestIncrease = [finances[i][0], currentProfitChange];
+    }
   }
 }
 
+// Reverse polarity of numbers
+greatestIncrease[1] = Math.abs(greatestIncrease[1]);
+greatestDecrease[1] *= -1;
 
 // Log the total amount
 console.log("Total: " + "$" + totalAmount);
 
 
 // Calculate Average Change (Total/(Number of months - 1)) and log it.
-averageChange = totalProfitChanges / (totalMonths - 1);
+averageChange = (totalProfitChanges / (totalMonths - 1));
 console.log("Average Change: " + "$" + averageChange.toFixed(2));
-
-
 
 
 
 // 4. CALCULATE The greatest increase in Profit/Losses (date and amount) over the entire period.
 
 
-
+console.log("Greatest Increase in Profits/Losses: " + greatestIncrease)
+console.log("Greatest Decrease in Profits/Losses: " + greatestDecrease)
 // 5. CALCULATE The greatest decrease in Profit/Losses (date and amount) over the entire period.

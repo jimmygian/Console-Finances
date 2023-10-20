@@ -2,6 +2,8 @@
 
 **Console Finances** is a JavaScript project that demonstrates the understanding of core concepts like loops, conditionals, math functions, arrays, and iteration. In this project, a financial dataset is analyzed to extract valuable insights. This README file provides a comprehensive overview of the project, its motivations, technical implementation details, and the problems solved during its development.
 
+![Screenshot of Console](./console-screenshot.png)
+
 ## Overview
 
 In this challenge, the project utilizes JavaScript skills to analyze the financial records of a company. A financial dataset has been provided in the `starter/index.js` file. The task was to create JavaScript code that analyzes the records to calculate the following:
